@@ -1,14 +1,31 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Orders</h1>
+<h1 class="text-center">Orders</h1>
 
-<div id="orders">
-  <% @orders.each do |order| %>
-    <%= render order %>
-    <p>
-      <%= link_to "Show this order", order %>
-    </p>
-  <% end %>
+<div class="container" id="orders">
+    <%= link_to "New order", new_order_path %>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Customers</th>
+        <th scope="col">Total</th>
+        <th scope="col">Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @orders.each_with_index do |order, index| %>
+        <tr>
+          <th scope="row"><%= index +1 %> </th>
+          <td><%= order.Customer_id %></td>
+          <td><%= order.total %></td>
+          <td><%= order.order_date%></td>
+          <td>    
+            <p> <%= link_to "Show this order", order %></p>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
 </div>
-
-<%= link_to "New order", new_order_path %>

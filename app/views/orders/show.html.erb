@@ -1,11 +1,35 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @order %>
-<%= render @order_details %>
+<h1 class="text-center">Order#<%= @order.id %></h1>
 
-<div>
-  <%= link_to "Edit this order", edit_order_path(@order) %> |
-  <%= link_to "Back to orders", orders_path %>
+<div class="container">
+    <%= render @order %>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Order</th>
+        <th scope="col">Item</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price/Item</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @order_details.each_with_index do |detail, index| %>
+        <tr>
+          <th scope="row"><%= index +1 %> </th>
+          <td><%= detail.Order_id %></td>
+          <td><%= detail.Item_id%></td>
+          <td><%= detail.quantity%></td>
+          <td><%= detail.price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+    <div>
+      <%= link_to "Edit this order", edit_order_path(@order) %> |
+      <%= link_to "Back to orders", orders_path %>
 
-  <%= button_to "Destroy this order", @order, method: :delete %>
+      <%= button_to "Destroy this order", @order, method: :delete %>
+    </div>
 </div>
