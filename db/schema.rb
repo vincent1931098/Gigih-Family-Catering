@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_22_200609) do
+ActiveRecord::Schema.define(version: 2022_04_23_005325) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2022_04_22_200609) do
     t.date "order_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status", default: "NEW"
     t.index ["Customer_id"], name: "index_orders_on_Customer_id"
   end
 

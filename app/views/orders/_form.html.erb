@@ -1,4 +1,4 @@
-<%= form_with(model: order) do |form| %>
+<%= form_with(model: order ) do |form| %>
   <% if order.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -18,12 +18,17 @@
 
   <div>
     <%= form.label :total, style: "display: block" %>
-    <%= form.number_field :total %>
+    <%= form.number_field :total, disabled:!params.has_key?(:id) %>
   </div>
 
   <div>
     <%= form.label :order_date, style: "display: block" %>
     <%= form.date_field :order_date %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select :status, ["NEW","PAID","CANCELLED"]%>
   </div>
 
   <div>
